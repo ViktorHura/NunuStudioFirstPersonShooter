@@ -1,0 +1,51 @@
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>Fall of Adolphin</title>
+		<style>
+		
+		html { 
+        background: url(images/Gameover.png) no-repeat center center fixed; 
+        -webkit-background-size: cover;
+        -moz-background-size: cover;
+        -o-background-size: cover;
+        background-size: cover;
+        }
+		
+		</style>
+		<img src="images/RestartB.png" onclick="history.go(-1);" id='Play' style="position:absolute;"	>
+		
+		
+	    
+	
+	
+	</head>
+	<body>
+		<script>
+		
+		function SetPos(){
+		
+		document.getElementById('Play').style.left = window.innerWidth / 2 - 100;
+		document.getElementById('Play').style.top = window.innerHeight / 3;
+		document.getElementById('Play').style.height = 100 + 'px';
+		document.getElementById('Play').style.width = 200 + 'px';
+			
+		
+			
+		
+		}
+		SetPos();
+		
+			var Pos = setInterval(function(){
+			
+		   
+			SetPos();
+					
+			}, 1);
+	   
+	    
+		
+		
+		</script>
+	</body>
+</html>

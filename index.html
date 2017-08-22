@@ -108,6 +108,22 @@ body {
 			{
 				app.toggleVR();
 			}
+			
+			var loop = setInterval(function(){
+			
+			if (app.program.playerdeath == true){
+			
+			
+			window.open('GameOver.html','_self',false);
+			
+			
+			}
+			
+			
+			
+			},1);
+			
+			
 		</script>
 
 		<!--Fullscreen button-->
