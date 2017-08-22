@@ -113,8 +113,9 @@ body {
 			
 			if (app.program.playerdeath == true){
 			
+			app.program.dispose();
+			setTimeout(function(){ window.open('GameOver.html','_self',false); },1000);
 			
-			window.open('GameOver.html','_self',false);
 			
 			
 			}
