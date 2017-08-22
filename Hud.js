@@ -10,147 +10,88 @@ function sethud(){
 			document.getElementById('Crosshair').style.zIndex = 10;
 			
 			
-			/*
-			document.getElementById('Play').style.left = window.innerWidth / 2 - 100;
-		    document.getElementById('Play').style.top = window.innerHeight / 4;
+			
+			document.getElementById('Play').style.left = window.innerWidth / 2 - 100 + 'px';
+		    document.getElementById('Play').style.top = window.innerHeight / 4 + 'px';
 		    document.getElementById('Play').style.height = 100 + 'px';
 		    document.getElementById('Play').style.width = 200 + 'px';
-			*/
+			
+			document.getElementById('Controls').style.left = 0 + 'px';
+		    document.getElementById('Controls').style.top = 0 + 'px';
+		    document.getElementById('Controls').style.zIndex = "10";
+			
 				
 			document.getElementById('dialog').style.zIndex = "4";
 			document.getElementById('HUD').style.zIndex = "10";
 			
-			/*
-			document.getElementById('instructions').style.zIndex = "5";
+			
+			document.getElementById('instructions').style.zIndex = "8";
 		
 			document.getElementById('Play').style.zIndex = "8";
-			document.getElementById('Exit').style.zIndex = "8"
 			
-			document.getElementById('Exit').style.left = document.getElementById('Play').style.left;
-		    document.getElementById('Exit').style.top = window.innerHeight / 4 + 150;
-		    document.getElementById('Exit').style.height = 100 + 'px';
-		    document.getElementById('Exit').style.width = 200 + 'px';
-			*/
+			
+			
+			
 			
 			document.getElementById('dialog').style.left = document.getElementById('dialogBg').style.left + 80 + "px";
 			document.getElementById('dialog').style.top = window.innerHeight - 118 + "px";
 			document.getElementById('dialog').style.zIndex = "3";
 			
-			/*
-			document.getElementById('WB').style.left = document.getElementById('Controls').style.left - 160;
-			document.getElementById('WB').style.top = document.getElementById('Controls').style.top + 133;
-			document.getElementById('WB').style.zIndex = "3";
 			
+			document.getElementById('WB').style.left = parseInt(document.getElementById('Controls').style.left, 10) + 160+ "px";
+			document.getElementById('WB').style.top = parseInt(document.getElementById('Controls').style.top, 10) + 133+ "px";
+			document.getElementById('WB').style.zIndex = "15";
 			
+			document.getElementById('AB').style.left = parseInt(document.getElementById('Controls').style.left, 10) + 160 + "px";
+			document.getElementById('AB').style.top = parseInt(document.getElementById('Controls').style.top, 10) + 173 + "px";
+			document.getElementById('AB').style.zIndex = "15";
 			
-			if (document.cookie.replace(/(?:(?:^|.*;\s*)W_key\s*\=\s*([^;]*).*$)|^.*$/, "$1") == 32){
-		    document.getElementById('WB').innerHTML = 'Space';
-			}
-			else if (document.cookie.replace(/(?:(?:^|.*;\s*)W_key\s*\=\s*([^;]*).*$)|^.*$/, "$1") == 16){
-		    document.getElementById('WB').innerHTML = 'Shift';
-		    }
-		    else{
-		    document.getElementById('WB').innerHTML = String.fromCharCode(document.cookie.replace(/(?:(?:^|.*;\s*)W_key\s*\=\s*([^;]*).*$)|^.*$/, "$1"));
-		    }
+			document.getElementById('SB').style.left = parseInt(document.getElementById('Controls').style.left, 10) + 160 + "px";
+			document.getElementById('SB').style.top = parseInt(document.getElementById('Controls').style.top, 10) + 253 + "px";
+			document.getElementById('SB').style.zIndex = "15";
 			
-			if (document.cookie.replace(/(?:(?:^|.*;\s*)A_key\s*\=\s*([^;]*).*$)|^.*$/, "$1") == 32){
-		    document.getElementById('AB').innerHTML = 'Space';
-			}
-			else if (document.cookie.replace(/(?:(?:^|.*;\s*)A_key\s*\=\s*([^;]*).*$)|^.*$/, "$1") == 16){
-		    document.getElementById('AB').innerHTML = 'Shift';
-		    }
-		    else{
-		    document.getElementById('AB').innerHTML = String.fromCharCode(document.cookie.replace(/(?:(?:^|.*;\s*)A_key\s*\=\s*([^;]*).*$)|^.*$/, "$1"));
-		    }
-		
-		
-		if (document.cookie.replace(/(?:(?:^|.*;\s*)S_key\s*\=\s*([^;]*).*$)|^.*$/, "$1") == 32){
-		    document.getElementById('SB').innerHTML = 'Space';
-			}
-			else if (document.cookie.replace(/(?:(?:^|.*;\s*)S_key\s*\=\s*([^;]*).*$)|^.*$/, "$1") == 16){
-		    document.getElementById('SB').innerHTML = 'Shift';
-		    }
-		    else{
-		    document.getElementById('SB').innerHTML = String.fromCharCode(document.cookie.replace(/(?:(?:^|.*;\s*)S_key\s*\=\s*([^;]*).*$)|^.*$/, "$1"));
-		    }
-		
-		
-		if (document.cookie.replace(/(?:(?:^|.*;\s*)D_key\s*\=\s*([^;]*).*$)|^.*$/, "$1") == 32){
-		    document.getElementById('DB').innerHTML = 'Space';
-			}
-			else if (document.cookie.replace(/(?:(?:^|.*;\s*)D_key\s*\=\s*([^;]*).*$)|^.*$/, "$1") == 16){
-		    document.getElementById('DB').innerHTML = 'Shift';
-		    }
-		    else{
-		    document.getElementById('DB').innerHTML = String.fromCharCode(document.cookie.replace(/(?:(?:^|.*;\s*)D_key\s*\=\s*([^;]*).*$)|^.*$/, "$1"));
-		    }
-		
-		if (document.cookie.replace(/(?:(?:^|.*;\s*)E_key\s*\=\s*([^;]*).*$)|^.*$/, "$1") == 32){
-		    document.getElementById('EB').innerHTML = 'Space';
-			}
-			else if (document.cookie.replace(/(?:(?:^|.*;\s*)E_key\s*\=\s*([^;]*).*$)|^.*$/, "$1") == 16){
-		    document.getElementById('EB').innerHTML = 'Shift';
-		    }
-		    else{
-		    document.getElementById('EB').innerHTML = String.fromCharCode(document.cookie.replace(/(?:(?:^|.*;\s*)E_key\s*\=\s*([^;]*).*$)|^.*$/, "$1"));
-		    }
-		
-		if (document.cookie.replace(/(?:(?:^|.*;\s*)Shift_key\s*\=\s*([^;]*).*$)|^.*$/, "$1") == 32){
-		    document.getElementById('SPB').innerHTML = 'Space';
-			}
-			else if (document.cookie.replace(/(?:(?:^|.*;\s*)Shift_key\s*\=\s*([^;]*).*$)|^.*$/, "$1") == 16){
-		    document.getElementById('SPB').innerHTML = 'Shift';
-		    }
-		    else{
-		    document.getElementById('SPB').innerHTML = String.fromCharCode(document.cookie.replace(/(?:(?:^|.*;\s*)Shift_key\s*\=\s*([^;]*).*$)|^.*$/, "$1"));
-		    }
-		
-		if (document.cookie.replace(/(?:(?:^|.*;\s*)Space_key\s*\=\s*([^;]*).*$)|^.*$/, "$1") == 32){
-		    document.getElementById('JB').innerHTML = 'Space';
-			}
-			else if (document.cookie.replace(/(?:(?:^|.*;\s*)Space_key\s*\=\s*([^;]*).*$)|^.*$/, "$1") == 16){
-		    document.getElementById('JB').innerHTML = 'Shift';
-		    }
-		    else{
-		    document.getElementById('JB').innerHTML = String.fromCharCode(document.cookie.replace(/(?:(?:^|.*;\s*)Space_key\s*\=\s*([^;]*).*$)|^.*$/, "$1"));
-		    }
-		
-		
+			document.getElementById('DB').style.left = parseInt(document.getElementById('Controls').style.left, 10) + 160 + "px";
+			document.getElementById('DB').style.top = parseInt(document.getElementById('Controls').style.top, 10) + 215 + "px";
+			document.getElementById('DB').style.zIndex = "15";
 			
-			document.getElementById('AB').style.left = document.getElementById('Controls').style.left - 160;
-			document.getElementById('AB').style.top = document.getElementById('Controls').style.top + 173;
-			document.getElementById('AB').style.zIndex = "3";
+			document.getElementById('EB').style.left = parseInt(document.getElementById('Controls').style.left, 10) + 160 + "px";
+			document.getElementById('EB').style.top = parseInt(document.getElementById('Controls').style.top, 10) + 305 + "px";
+			document.getElementById('EB').style.zIndex = "15";
 			
-			document.getElementById('SB').style.left = document.getElementById('Controls').style.left - 160;
-			document.getElementById('SB').style.top = document.getElementById('Controls').style.top + 253;
-			document.getElementById('SB').style.zIndex = "3";
+			document.getElementById('SPB').style.left = parseInt(document.getElementById('Controls').style.left, 10) + 160 + "px";
+			document.getElementById('SPB').style.top = parseInt(document.getElementById('Controls').style.top, 10) + 345 + "px";
+			document.getElementById('SPB').style.zIndex = "15";
 			
-			document.getElementById('DB').style.left = document.getElementById('Controls').style.left - 160;
-			document.getElementById('DB').style.top = document.getElementById('Controls').style.top + 215;
-			document.getElementById('DB').style.zIndex = "3";
+			document.getElementById('JB').style.left = parseInt(document.getElementById('Controls').style.left, 10) + 160 + "px";
+			document.getElementById('JB').style.top = parseInt(document.getElementById('Controls').style.top, 10) + 385 + "px";
 			
-			document.getElementById('EB').style.left = document.getElementById('Controls').style.left - 160;
-			document.getElementById('EB').style.top = document.getElementById('Controls').style.top + 305;
-			document.getElementById('EB').style.zIndex = "3";
+			document.getElementById('JB').style.zIndex = "15";
 			
-			document.getElementById('SPB').style.left = document.getElementById('Controls').style.left - 160;
-			document.getElementById('SPB').style.top = document.getElementById('Controls').style.top + 345;
-			document.getElementById('SPB').style.zIndex = "3";
+			document.getElementById('sensr').style.left = parseInt(document.getElementById('Controls').style.left, 10) + 170 + "px";
+			document.getElementById('sensr').style.top = parseInt(document.getElementById('Controls').style.top, 10) + 475 + "px";
+			document.getElementById('sensr').style.zIndex = "15";
 			
-			document.getElementById('JB').style.left = document.getElementById('Controls').style.left - 160;
-			document.getElementById('JB').style.top = document.getElementById('Controls').style.top + 385;
-			document.getElementById('JB').style.zIndex = "3";
+			document.getElementById('sensv').style.left = parseInt(document.getElementById('sensr').style.left, 10) + 160 + "px";
+			document.getElementById('sensv').style.top = parseInt(document.getElementById('sensr').style.top, 10) + "px";
+			document.getElementById('sensv').style.zIndex = "15";
 			
-			if (document.getElementById('Volume')){
-				
-			document.getElementById('Volume').style.left = window.innerWidth - 50;	
-				
-				
-				
-			}
+			document.getElementById('sfxr').style.left = parseInt(document.getElementById('Controls').style.left, 10) + 170 + "px";
+			document.getElementById('sfxr').style.top = parseInt(document.getElementById('Controls').style.top, 10) + 525 + "px";
+			document.getElementById('sfxr').style.zIndex = "15";
 			
+			document.getElementById('sfxv').style.left = parseInt(document.getElementById('sfxr').style.left, 10) + 160 + "px";
+			document.getElementById('sfxv').style.top = parseInt(document.getElementById('sfxr').style.top, 10) + "px";
+			document.getElementById('sfxv').style.zIndex = "15";
 			
-			*/
+			document.getElementById('backr').style.left = parseInt(document.getElementById('Controls').style.left, 10) + 260 + "px";
+			document.getElementById('backr').style.top = parseInt(document.getElementById('Controls').style.top, 10) + 570 + "px";
+			document.getElementById('backr').style.zIndex = "15";
+			
+			document.getElementById('backv').style.left = parseInt(document.getElementById('backr').style.left, 10) + "px";
+			document.getElementById('backv').style.top = parseInt(document.getElementById('backr').style.top, 10) + 20 + "px";
+			document.getElementById('backv').style.zIndex = "15";
+
+			
 			document.getElementById('dialogBg').style.zIndex = "2";
 			document.getElementById('dialogBg').style.left = 0 + "px";
 			document.getElementById('dialogBg').style.top = window.innerHeight - 130 + "px";
@@ -176,7 +117,9 @@ function sethud(){
 
 			var HUD = setInterval(function(){
 			
+			if (app.program){
 			hp = app.program.playerhealth;
+			}
 			
 		    document.getElementById('health').innerHTML = hp;
 			if (magazineamount != 'undefined'){

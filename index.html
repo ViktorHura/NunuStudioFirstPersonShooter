@@ -19,6 +19,38 @@
 		
 		</div>
 		
+		
+		<div id="blocker" style="visibility:hidden">
+
+			<div id="instructions">
+			
+				
+				<span id="Play"  style="position:absolute;font-size:200%;width: 650px;color: brown;pointer-events: none;">Click to Play...</span>
+				
+				<img src="images/Controls.png"  id='Controls' style="position:absolute;">
+				
+				
+				
+				<span id="WB"  style="position:absolute;font-size:150%;width: 650px;color: brown;">W/Z</span>
+				<span id="AB"  style="position:absolute;font-size:150%;width: 650px;color: brown;">A/Q</span>
+				<span id="SB"  style="position:absolute;font-size:150%;width: 650px;color: brown;">S</span>
+				<span id="DB"  style="position:absolute;font-size:150%;width: 650px;color: brown;">D</span>
+				<span id="EB"  style="position:absolute;font-size:150%;width: 650px;color: brown;"> E / Mouse Wheel</span>
+				<span id="SPB" style="position:absolute;font-size:150%;width: 650px;color: brown;">Shift</span>
+				<span id="JB"  style="position:absolute;font-size:150%;width: 650px;color: brown;">Space</span>
+				<input  style="position:absolute;" type="range" step="1" onchange="sensValue(this.value)" id="sensr" value="localStorage.getItem('sensitivity')"><span id="sensv"  style="position:absolute;font-size:150%;width:30px;color: brown;"></span>
+				<input  style="position:absolute;" type="range" step="1" min="0" max="200" onchange="sfxValue(this.value)" id="sfxr" value="localStorage.getItem('sfxvolume')"><span id="sfxv"  style="position:absolute;font-size:150%;width:30px;color: brown;"></span>
+				<input  style="position:absolute;" type="range" step="1" min="0" max="200" onchange="backValue(this.value)" id="backr" value="localStorage.getItem('backgroundvolume')"><span id="backv"  style="position:absolute;font-size:150%;width:30px;color: brown;"></span>
+				
+				<br />
+			</div>
+
+		</div>
+		
+		
+		
+		
+		
 <style type="text/css">
 body {
     overflow:hidden;
@@ -38,9 +70,17 @@ body {
 		<script type="text/javascript">
 			var app;
 			var hp = 100;
+			
 			var magazineamount;
 			var magazinesize;
 			var ammotxt;
+			
+			var loaded = false;
+			var ingame = false;
+			
+			var sensitivity;
+			var sfxvolume;
+			var backgroundvolume;
 
 			//Initialize app
 			function run()
@@ -60,6 +100,44 @@ body {
 			        magazinesize = app.program.magazinesize;
 					ammotxt = magazineamount + "/" + magazinesize;
 			        console.log(ammotxt);
+					
+					loaded = true;
+					
+					
+					if (localStorage.getItem("sensitivity")){
+			        sensitivity = localStorage.getItem("sensitivity");
+					app.program.playersens = sensitivity;
+					document.getElementById("sensv").innerHTML = sensitivity * 10000;
+			        }else{
+			        sensitivity = 0.005;
+			        localStorage.setItem("sensitivity", sensitivity);
+					app.program.playersens = sensitivity;
+					document.getElementById("sensv").innerHTML = sensitivity * 10000;
+			        }
+					
+					if (localStorage.getItem("sfxvolume")){
+			        sfxvolume = localStorage.getItem("sfxvolume");
+					app.program.soundvolume = sfxvolume;
+					document.getElementById("sfxv").innerHTML = sfxvolume * 100;
+			        }else{
+			        sfxvolume = 0.50;
+			        localStorage.setItem("sfxvolume", sfxvolume);
+					app.program.soundvolume = sfxvolume;
+					document.getElementById("sfxv").innerHTML = sfxvolume * 100;
+			        }
+					
+					if (localStorage.getItem("backgroundvolume")){
+			        backgroundvolume = localStorage.getItem("backgroundvolume");
+					app.program.backgroundvolume = backgroundvolume;
+					document.getElementById("backv").innerHTML = backgroundvolume * 100;
+			        }else{
+			        backgroundvolume = 0.30;
+			        localStorage.setItem("backgroundvolume", backgroundvolume);
+					app.program.backgroundvolume = backgroundvolume;
+					document.getElementById("backv").innerHTML = backgroundvolume * 100;
+			        }
+					
+					
 
 					//Check if VR is available
 					if(app.vrAvailable())
@@ -109,16 +187,81 @@ body {
 				app.toggleVR();
 			}
 			
-			var loop = setInterval(function(){
 			
+			
+			function sensValue(newValue){
+			
+			var sensdata = newValue / 10000;
+
+	        document.getElementById("sensv").innerHTML=newValue;
+			
+			localStorage.setItem("sensitivity", sensdata);
+			app.program.playersens = sensdata;
+			
+
+			}
+			function sfxValue(newValue){
+			
+			var sfxdata = newValue / 100;
+
+	        document.getElementById("sfxv").innerHTML=newValue;
+			
+			localStorage.setItem("sfxvolume", sfxdata);
+			app.program.soundvolume = sfxdata;
+			
+
+			}
+			
+			function backValue(newValue){
+			
+			var backdata = newValue / 100;
+
+	        document.getElementById("backv").innerHTML=newValue;
+			
+			localStorage.setItem("backgroundvolume", backdata);
+			app.program.backgroundvolume = backdata;
+			
+
+			}
+			
+			
+			
+			
+			
+			var loop = setInterval(function(){
+			if (app.program){
 			if (app.program.playerdeath == true){
 			
 			app.exit();
 			setTimeout(function(){ window.open('GameOver.html','_self',false); },1000);
+
+			}
+			}
+			if (document.pointerLockElement != null){
 			
+			ingame = true;
+			
+			}else{
+			ingame = false;
+			}
+			
+			if (ingame == true){
+			app.resume();
+			document.getElementById("blocker").style.visibility = "hidden";
 			
 			
 			}
+			else if(loaded == true){
+			
+			document.getElementById("blocker").style.visibility = "visible";
+			
+			}
+			if (ingame == false){
+			app.pause();
+			}
+			
+			
+			
 			
 			
 			
