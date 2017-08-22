@@ -5,15 +5,42 @@
 		<title></title>
 		<meta http-equiv="content-type" content="text/html; charset=ISO-8859-1"/>
 		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+		
+		<div id="HUD"style="position:absolute; visibility:hidden">
+		
+		<span id="dialog"  style="position:absolute;font-size:150%;width: 400px;color: brown;"></span>
+		<img src="images/Dialog.png" id="dialogBg" style="position:absolute;"	>
+		<span id="health"  style="position:absolute;font-size:200%;width: 300px;color: Green;">100%</span>
+		<span id="ammo"  style="position:absolute;font-size:200%;width: 300px;color: Blue;">30/30</span>
+		<img src="images/Status.png" id="Status" style="position:absolute;">
+		<img src="images/Crosshair.png" id="Crosshair" style="position:absolute;">
+		
+		
+		
+		</div>
+		
+<style type="text/css">
+body {
+    overflow:hidden;
+}
+</style>
+		
+		
+		
 	</head>
 
 	<body style="background-color: #222222" onload="run();" onresize="resize();" oncontextmenu="return false;">
 		<!--nunuStudio lib-->
 		<script type="text/javascript" src="nunu.min.js"></script>
+		
 
 		<!--App code-->
 		<script type="text/javascript">
 			var app;
+			var hp = 100;
+			var magazineamount;
+			var magazinesize;
+			var ammotxt;
 
 			//Initialize app
 			function run()
@@ -27,6 +54,12 @@
 				{
 					var button = document.getElementById("fullscreen");
 					button.style.visibility = "visible";
+					document.getElementById('HUD').style.visibility = "visible";
+					
+					magazineamount = app.program.magazineamount;
+			        magazinesize = app.program.magazinesize;
+					ammotxt = magazineamount + "/" + magazinesize;
+			        console.log(ammotxt);
 
 					//Check if VR is available
 					if(app.vrAvailable())
@@ -94,5 +127,10 @@
 				<div id="bar" style="position:absolute; width:0%; height:100%; left:0%; top:0%; background-color:#FFFFFF">
 			</div>
 		</div>
+		
+		
+		
+		<script type="text/javascript" src="Hud.js"></script>
+		
 	</body>
 </html>
