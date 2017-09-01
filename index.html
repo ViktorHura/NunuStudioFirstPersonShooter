@@ -278,7 +278,7 @@ body {
 			localStorage.setItem("killedall", false);
 			}
 			
-			localStorage.setItem("shotsfired", app.program.shotsfired);
+			localStorage.setItem("shotsfired", app.program.shotsfired + 1);
 			localStorage.setItem("enemieskilled", app.program.enemieskilled);
 			app.exit();
 			setTimeout(function(){ window.open('Interlevel.html','_self',false); },500);
