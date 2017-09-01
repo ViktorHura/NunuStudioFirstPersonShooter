@@ -1,0 +1,127 @@
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>Fall of Adolphin</title>
+		<style>
+		
+		html { 
+        background: url(images/Interlevel.png) no-repeat center center fixed; 
+        -webkit-background-size: cover;
+        -moz-background-size: cover;
+        -o-background-size: cover;
+        background-size: cover;
+        }
+		
+		</style>
+		<img src="images/NextB.png" onclick="history.go(-1);" id='Play' style="position:absolute;"	>
+		<img src="images/RestartB.png" onclick="history.go(-1);" id='Back' style="position:absolute;"	>
+		<img src="images/SubmitB.png" onclick="sendscore()" id='Submit' style="position:absolute;"	>
+		<img src="images/ScoreB.png" onclick="window.open('http://gmscoreboard.com/KveikGL','_self',false);" id='Score' style="position:absolute;"	>
+		<span id="Time"  style="position:absolute;font-size:200%;width: 650px;color: cyan;">Time: </span>
+		<span id="hpleft"  style="position:absolute;font-size:200%;color: cyan;">Health left: </span>
+		<span id="shotsfired"  style="position:absolute;font-size:200%;color: cyan;">Bullets fired: </span>
+		<span id="ek"  style="position:absolute;font-size:200%;color: cyan;">Enemies killed: </span>
+	    <span id="fscore"  style="position:absolute;font-size:300%;color: pink;">Final Score: </span>
+	
+	
+	</head>
+	<body>
+	    <script id='tag' type="text/javascript">
+		
+		var tagid = '59a95c2b5737e15042714032284';
+		document.tagid = tagid;
+		document.getElementById('tag').parentElement.removeChild(document.getElementById('tag'));
+		
+		</script>
+		
+		<script>
+		
+		
+		
+		
+		function SetPos(){
+		
+		document.getElementById('Play').style.left = window.innerWidth / 2 - 100;
+		document.getElementById('Play').style.top = window.innerHeight - window.innerHeight / 5;
+		document.getElementById('Play').style.height = 100 + 'px';
+		document.getElementById('Play').style.width = 200 + 'px';
+		
+		document.getElementById('Back').style.left = window.innerWidth / 100;
+		document.getElementById('Back').style.top = window.innerHeight - window.innerHeight / 5;
+		document.getElementById('Back').style.height = 100 + 'px';
+		document.getElementById('Back').style.width = 200 + 'px';	
+		
+		document.getElementById('Submit').style.left = window.innerWidth / 2 - 350;
+		document.getElementById('Submit').style.top = window.innerHeight - window.innerHeight / 5;
+		document.getElementById('Submit').style.height = 100 + 'px';
+		document.getElementById('Submit').style.width = 200 + 'px';
+		
+		document.getElementById('Score').style.left = window.innerWidth / 2 + 150;
+		document.getElementById('Score').style.top = window.innerHeight - window.innerHeight / 5;
+		document.getElementById('Score').style.height = 100 + 'px';
+		document.getElementById('Score').style.width = 200 + 'px';
+		
+		document.getElementById('Time').style.left = window.innerWidth / 2 - 250;
+		document.getElementById('Time').style.top = window.innerHeight / 4;
+		document.getElementById('Time').style.height = 100 + 'px';
+		document.getElementById('Time').style.width = 800 + 'px';
+		
+		document.getElementById('hpleft').style.left = window.innerWidth / 2 - 250;
+		document.getElementById('hpleft').style.top = window.innerHeight / 3.25;
+		document.getElementById('hpleft').style.height = 100 + 'px';
+		document.getElementById('hpleft').style.width = 800 + 'px';
+		
+		document.getElementById('shotsfired').style.left = window.innerWidth / 2 - 250;
+		document.getElementById('shotsfired').style.top = window.innerHeight / 2.50;
+		document.getElementById('shotsfired').style.height = 100 + 'px';
+		document.getElementById('shotsfired').style.width = 800 + 'px';
+		
+		document.getElementById('fscore').style.left = window.innerWidth / 2 - 250;
+		document.getElementById('fscore').style.top = window.innerHeight / 1.5;
+		document.getElementById('fscore').style.height = 100 + 'px';
+		document.getElementById('fscore').style.width = 800 + 'px';
+		
+		document.getElementById('ek').style.left = window.innerWidth / 2 - 250;
+		document.getElementById('ek').style.top = window.innerHeight / 2;
+		document.getElementById('ek').style.height = 100 + 'px';
+		document.getElementById('ek').style.width = 800 + 'px';
+			
+		document.getElementById('Time').innerHTML = 'Time: ' + localStorage.getItem("gametime") + ' seconds';
+		document.getElementById('hpleft').innerHTML = 'Health left: ' + localStorage.getItem("hpleft");	
+		document.getElementById('shotsfired').innerHTML = 'Bullets fired: ' + localStorage.getItem("shotsfired");
+		document.getElementById('ek').innerHTML = 'Enemies: ' + localStorage.getItem("enemieskilled");
+		var finalscore = Math.round(localStorage.getItem("hpleft") / localStorage.getItem("gametime") / localStorage.getItem("shotsfired") * localStorage.getItem("enemieskilled") * 100000);
+		document.getElementById('fscore').innerHTML = 'Final Score: ' + finalscore;
+		
+		}
+		SetPos();
+		
+			var Pos = setInterval(function(){
+			
+		   
+			SetPos();
+					
+			}, 1);
+	   
+	    function sendscore(){
+		var finalscore = Math.round(localStorage.getItem("hpleft") / localStorage.getItem("gametime") / localStorage.getItem("shotsfired") * localStorage.getItem("enemieskilled") * 100000);
+		document.getElementById('Submit').style.display = 'none';
+		var playername = prompt("Please enter your name", "");
+		
+		var string = 'http://gmscoreboard.com/handle_score.php?tagid=' + tagid + '&player=' + playername + '&score=' + finalscore;
+		
+		if (playername == null || playername == ""){
+		alert('please input a name');
+		}else{
+		var wnd = window.open(string);
+		
+		setTimeout(function() { wnd.close();}, 1000); return false;
+		
+		}
+		
+		}
+		
+		
+		</script>
+	</body>
+</html>

@@ -5,6 +5,7 @@
 		<title></title>
 		<meta http-equiv="content-type" content="text/html; charset=ISO-8859-1"/>
 		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+		<meta http-equiv="Cache-control" content="public">
 		
 		<div id="HUD"style="position:absolute; visibility:hidden">
 		
@@ -71,6 +72,7 @@ body {
 			var app;
 			var hp = 100;
 			
+			
 			var magazineamount;
 			var magazinesize;
 			var ammotxt;
@@ -102,7 +104,7 @@ body {
 			        console.log(ammotxt);
 					
 					loaded = true;
-					
+					missionstate = 1;
 					
 					if (localStorage.getItem("sensitivity")){
 			        sensitivity = localStorage.getItem("sensitivity");
@@ -160,8 +162,10 @@ body {
 				{
 					if(event.lengthComputable)
 					{
+					
 						var progress = event.loaded / event.total * 100;
 						bar.style.width = progress + "%";
+						console.log(event);
 					}
 				};
 
@@ -233,7 +237,7 @@ body {
 			if (app.program.playerdeath == true){
 			
 			app.exit();
-			setTimeout(function(){ window.open('GameOver.html','_self',false); },1000);
+			setTimeout(function(){ window.open('GameOver.html','_self',false); },500);
 
 			}
 			}
@@ -261,11 +265,33 @@ body {
 			}
 			
 			
+			//document.title = app.program.timegame;
+			if (loaded == true){
+			if (app.program.endlevel == true){
 			
+			localStorage.setItem("gametime", Number(Math.round(app.program.timegame)));
+			localStorage.setItem("hpleft", hp);
 			
+			if(app.program.killedall == true){
+			localStorage.setItem("killedall", true);
+			}else{
+			localStorage.setItem("killedall", false);
+			}
+			
+			localStorage.setItem("shotsfired", app.program.shotsfired);
+			localStorage.setItem("enemieskilled", app.program.enemieskilled);
+			
+			setTimeout(function(){ window.open('Interlevel.html','_self',false); },500);
+			
+			}
+			}
 			
 			
 			},1);
+			
+			
+			
+			
 			
 			
 		</script>
@@ -291,6 +317,7 @@ body {
 		
 		
 		<script type="text/javascript" src="Hud.js"></script>
+		<script type="text/javascript" src="timer.js"></script>
 		
 	</body>
 </html>
